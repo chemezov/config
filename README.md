@@ -1,3 +1,8 @@
+Do not use this REPO!
+---------------------
+
+Use original yii2tech/config. This repo created for fix our shitty CRM bug.
+
 <p align="center">
     <a href="https://github.com/yii2tech" target="_blank">
         <img src="https://avatars2.githubusercontent.com/u/12951949" height="100px">

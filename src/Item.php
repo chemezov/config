@@ -140,7 +140,7 @@ class Item extends Model
     public function attributes()
     {
         return [
-            'value'
+            'value',
         ];
     }
 
@@ -160,7 +160,7 @@ class Item extends Model
     public function attributeHints()
     {
         return [
-            'value' => $this->description
+            'value' => $this->description,
         ];
     }
 
@@ -226,7 +226,9 @@ class Item extends Model
             if (array_key_exists($name, $source)) {
                 $result = $source[$name];
             } else {
-                // throw new Exception('Key "' . $name . '" not present!');
+                if (substr(Yii::$app->request->url, 0, strlen('/config/config/json')) === '/config/config/json') {
+                    throw new Exception('Key "' . $name . '" not present!');
+                }
             }
         } elseif (is_object($source)) {
             if ($name === 'components' && ($source instanceof ServiceLocator)) {
@@ -238,7 +240,9 @@ class Item extends Model
                     if ($source instanceof \ArrayAccess) {
                         $result = $source[$name];
                     } else {
-                        throw new Exception('Property "' . get_class($source) . '::' . $name . '" not present!');
+                        if (substr(Yii::$app->request->url, 0, strlen('/config/config/json')) === '/config/config/json') {
+                            throw new Exception('Property "' . get_class($source) . '::' . $name . '" not present!');
+                        }
                     }
                 }
             }
