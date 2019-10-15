@@ -1,5 +1,5 @@
 {
-    "name": "yii2tech/config",
+    "name": "chemezov/config",
     "description": "Provides support for Yii2 application runtime configuration",
     "keywords": ["yii2", "config", "configuration", "runtime", "database"],
     "type": "yii2-extension",
