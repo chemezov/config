@@ -226,7 +226,7 @@ class Item extends Model
             if (array_key_exists($name, $source)) {
                 $result = $source[$name];
             } else {
-                throw new Exception('Key "' . $name . '" not present!');
+                // throw new Exception('Key "' . $name . '" not present!');
             }
         } elseif (is_object($source)) {
             if ($name === 'components' && ($source instanceof ServiceLocator)) {
