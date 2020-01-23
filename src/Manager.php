@@ -149,7 +149,7 @@ class Manager extends Component implements BootstrapInterface
      * It should be [[Storage]] instance or its array configuration.
      */
     private $_storage = [
-        'class' => 'yii2tech\config\StorageDb'
+        'class' => 'yii2tech\config\StorageDb',
     ];
 
 
@@ -232,7 +232,8 @@ class Manager extends Component implements BootstrapInterface
     {
         $this->normalizeItems();
         if (!array_key_exists($id, $this->_items)) {
-            throw new InvalidParamException("Unknown config item '{$id}'.");
+            return null;
+//            throw new InvalidParamException("Unknown config item '{$id}'.");
         }
         if (!is_object($this->_items[$id])) {
             $this->_items[$id] = $this->createItem($id, $this->_items[$id]);
@@ -291,7 +292,10 @@ class Manager extends Component implements BootstrapInterface
     {
         foreach ($itemValues as $id => $value) {
             $item = $this->getItem($id);
-            $item->value = $value;
+
+            if ($item) {
+                $item->value = $value;
+            }
         }
         return $this;
     }
